@@ -1,22 +1,22 @@
 import React from 'react';
-import './pageLogin.css';
+import './pageLogin.scss';
 
 // For Ant Design components
-import { Row, Col, Form } from 'antd';
-const FormItem = Form.Item;
+import { Row, Col, Form, DatePicker } from 'antd';
 
-// Images
-import pageLoginImgLeft from '../images/travelWithThings.jpeg';
+// // Images
+// import pageLoginImgLeft from '../images/travelWithThings.jpeg';
+
+// For convenience
+const FormItem = Form.Item;
 
 // Left side
 class PageLeftSide extends React.Component{
   render() {
     return (
 	  <div className = "leftSide">
-	    <img
-		  className = "ls_image"
-		  src = {pageLoginImgLeft}
-		/>
+		  <h1>LoginPage LeftSide</h1>
+		  <DatePicker />
 	  </div>
 		)
 	}
@@ -24,16 +24,16 @@ class PageLeftSide extends React.Component{
 
 // Right side
 class PageRightSide extends React.Component{
-	render() {
-		return (
-			<div className = "rightSide">
-				<Form layout="inline">
-					<FormItem>
-						<h1>LoginPage RightSide</h1>
-					</FormItem>
-				</Form>
-			</div>
-		)
+  render() {
+	return (
+	  <div className = "rightSide">
+	    <Form layout="inline">
+		  <FormItem>
+		    <h1>LoginPage RightSide</h1>
+		  </FormItem>
+		</Form>
+      </div>
+		);
 	}
 }
 
@@ -54,6 +54,6 @@ export class PageLogin extends React.Component{
 		
 		</Row>
 	  </div>
-        )
+        );
     }
 }
