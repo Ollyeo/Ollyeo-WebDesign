@@ -1,76 +1,67 @@
 import React from 'react';
-// import Image from 'react-image-resizer';
 
 import './pageLogin.css';
-import { InputLoginID, InputLoginPW } from './../components/molecules/mcInputs';
+import { WrappedLoginForm } from './../components/organisms/ogLogin';
 
 // For Ant Design components
 import { Row, Col, Form, Icon, Input, Button, Checkbox } from 'antd';
 
 // Images
-import pageLoginImgLeft from '../asset/images/travelWithThings.jpeg';
+import imageNormal from '../asset/images/travelPlan_Normal.jpg';
+import ImageHorizontal from '../asset/images/plane_Horizontal.jpg';
 
-// For convenience
-const FormItem=Form.Item;
+import AutoFitImage from 'react-image-autofit-frame'; // Imgae Auto-Fit
+const FormItem=Form.Item; // For convenience
 
-// // Manually import AutoFitImage from 'react-image-autofit-frame';
-// var AutoFitImage=require("../../node_modules/react-image-autofit-frame");
+// Image Auto Resizing
+//  https://www.npmjs.com/package/react-image-autofit-frame
+//  100%, bind(), componentDidMount, componentWillUnmount
+
+// Window Size
+//  https://www.npmjs.com/package/react-window-size
 
 // Main Login Page
 export class PageLogin extends React.Component{
+	constructor(props) {
+	  super(props);
+	  this.state = { width: 0, height: 0 };
+	  this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+	}
+
+	componentWillUnmount() {
+	  window.removeEventListener('resize', this.updateWindowDimensions);
+	}
+	
+	componentDidMount() {
+	  this.updateWindowDimensions();
+	  window.addEventListener('resize', this.updateWindowDimensions);
+	}
+
+	updateWindowDimensions() {
+	  this.setState({ width: window.innerWidth, height: window.innerHeight });
+	}
+	
   render() {
     return (
-	  <div className="container">
-		<Row>
-		
+	  <div>
+		<Row type="flex" justify="space-around" align="middle">
 		  <Col span={12}>
-		    <PageLeftSide />
+		    <AutoFitImage 
+				imgSrc={ImageHorizontal}
+				frameWidth={((this.state.width * 0.5) - 0) + 'px'}
+				frameHeight={((this.state.height * 1.0) - 0) + 'px'}
+			/>
 		  </Col>
-		
+
 		  <Col span={12}>
-		    <PageRightSide />
+			<Row type="flex" justify="space-around" align="middle">
+				<Col span={12}>
+					<WrappedLoginForm />
+				</Col>
+			</Row>
 		  </Col>
-		
 		</Row>
 	  </div>
         )
     }
-}
-
-// Left side
-class PageLeftSide extends React.Component{
-  render() {
-    return (
-	  <div className="leftSide">
-		  <img className="image_Main"
-		    src={pageLoginImgLeft}
-            width={200}
-		    height={200}
-		  />
-	  </div>
-		)
-	}
-}
-
-// Right side
-class PageRightSide extends React.Component {
-  render() {
-	  return (
-		  <div className="rightSide">
-		  	<LoginForm />
-		  </div>
-	  );
-  }
-}
-
-class LoginForm extends React.Component {
-	
-	render() {
-		return (
-			<div >
-				<InputLoginID />
-				<InputLoginPW />
-			</div>
-		);
-	}
 }

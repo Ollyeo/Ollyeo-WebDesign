@@ -3,40 +3,30 @@ import React from 'react';
 import { Form, Input, Icon } from 'antd';
 const FormItem = Form.Item;
 
-// Ant Design Icons
-//  https://ant.design/components/icon/
-
 // Dynamic Rules : Perform different check rules according to different situations.
 //  https://ant.design/components/form/
-class SubmitInput extends React.Component {
 
-	// Values
+class ValidInput extends React.Component {
+	// Variables
 	propTypes: {
 		obj_id: React.PropTypes.string.isRequired,
-		submit_consoleLog: '{id} SubmitInput, submit_consoleLog',
-
-		pf_iconType: 'question',
+		obj_form: PropTypes.object,
+			
+		size: 'default',
 		placeholder: '',
+		style: '',
+			
+		pf_iconType: 'question',
 
 		// Validation Rules
 		vr_required: false,
 		vr_message: 'Validation error message.'
 	}
-	
-	handleSubmit=(e) => {
-		e.preventDefault();
-		this.props.form.validateFields((err, values) => {
-			if (!err) {
-				console.log(this.props.consoleLog, values);
-			}
-		});
-	}
 
 	render() {
-		const { getFieldDecorator } = this.props.form;
-		
+		const { getFieldDecorator } = this.props.obj_form;
 		return (
-			<Form onSubmit={this.handleSubmit} >
+			<Form>
 				<FormItem>
 					{getFieldDecorator
 						(
@@ -56,7 +46,9 @@ class SubmitInput extends React.Component {
 										style={{ color: 'rgba(0,0,0,.25)' }}
 									/>
 								}
+								size={this.props.size}
 								placeholder={this.props.placeholder}
+								style={ this.props.style }
 							/>
 						)
 					}
@@ -67,4 +59,4 @@ class SubmitInput extends React.Component {
 }
 
 // getFieldDecorator
-export const WrappedSubmitInput = Form.create()(SubmitInput);
+export const WrappedValidInput = Form.create()(ValidInput);
