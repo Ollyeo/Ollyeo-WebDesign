@@ -1,4 +1,6 @@
 import React from 'react';
+import './ogLogin.css';
+
 import { Form, Button } from 'antd';
 import { InputLoginID, InputLoginPW } from './../molecules/mcInputs';
 
@@ -23,15 +25,26 @@ export class LoginForm extends React.Component {
 	render() {	  
 		const { form } = this.props;
 		return (
-			<Form onSubmit={this.handleSubmit} >
+			<Form className="login-form" onSubmit={this.handleSubmit} >
 				<FormItem>
 					<InputLoginID obj_form={ form } />
 					<InputLoginPW obj_form={ form } />
-					<Button
+					<a className="forgot-href" 
+						href="">Forgot password?
+					</a>
+					<Button className="login-button"
 						type="primary"
 						htmlType="submit"
 						>Log in
 					</Button>
+					<Form className="create-recommend-text" layout="inline" >
+						<FormItem>
+							<h>Not registered?&nbsp;</h>
+							<a className="create-href"
+								href="">Create an account!
+							</a>
+						</FormItem>
+					</Form>
 				</FormItem>
 			</Form>
         )

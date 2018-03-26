@@ -47,7 +47,7 @@ export class PageLogin extends React.Component{
 		<Row type="flex" justify="space-around" align="middle">
 		  <Col span={12}>
 		    <AutoFitImage 
-				imgSrc={ImageHorizontal}
+				imgSrc={imageNormal}
 				frameWidth={((this.state.width * 0.5) - 0) + 'px'}
 				frameHeight={((this.state.height * 1.0) - 0) + 'px'}
 			/>
