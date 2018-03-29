@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Form, Input, Icon } from 'antd';
 const FormItem = Form.Item;
@@ -7,22 +8,6 @@ const FormItem = Form.Item;
 //  https://ant.design/components/form/
 
 class ValidInput extends React.Component {
-	// Variables
-	propTypes: {
-		obj_id: React.PropTypes.string.isRequired,
-		obj_form: PropTypes.object,
-			
-		size: 'default',
-		placeholder: '',
-		style: '',
-			
-		pf_iconType: 'question',
-
-		// Validation Rules
-		vr_required: false,
-		vr_message: 'Validation error message.'
-	}
-
 	render() {
 		const { getFieldDecorator } = this.props.obj_form;
 		return (
@@ -56,6 +41,22 @@ class ValidInput extends React.Component {
 			</Form>
 		);
 	}
+}
+
+// Variables
+ValidInput.propTypes = {
+	obj_id: PropTypes.string.isRequired,
+	obj_form: PropTypes.object.isRequired,
+
+	size: 'default',
+	placeholder: '',
+	style: '',
+
+	pf_iconType: 'question',
+
+	// Validation Rules
+	vr_required: false,
+	vr_message: 'Validation error message.'
 }
 
 // getFieldDecorator
