@@ -1,8 +1,16 @@
 import { combineReducers } from 'redux';
-import LoginForm from './../components/organisms/ogLogin';
+import formValues from './formValues';
 
+// Configuration for modularization (Exception of the first rule of REDUX)
+const reduxConfig = () => {
+  const store = createStore(rootReducer);
+  return store;
+};
+
+// Root Reducer
 const rootReducer = combineReducers({
-  LoginForm
+  formValues
 });
 
-export default rootReducer
+// store
+export default reduxConfig;

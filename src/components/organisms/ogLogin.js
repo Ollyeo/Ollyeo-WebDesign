@@ -1,12 +1,15 @@
 import React from 'react';
 import './ogLogin.css';
 
-import { Form, Button } from 'antd';
-import { InputLoginID, InputLoginPW } from './../molecules/mcInputs';
+import { connect } from 'react-redux'; // Reducx
+import formValues from './../../reducers/formValues'; // action
+import { InputLoginID, InputLoginPW } from './../molecules/mcInputs'; // Molecules
 
+// Ant Design
+import { Form, Button } from 'antd';
 const FormItem = Form.Item;
 
-export class LoginForm extends React.Component {	
+class LoginForm extends React.Component {	
 	
 	// Variables
 	propTypes: {
@@ -50,6 +53,14 @@ export class LoginForm extends React.Component {
         )
     }
 }
+
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         props: form => dispatch(formValues(form))
+//     }
+// }
+
+// LoginForm = connect(undefined, mapDispatchToProps)(LoginForm);
 
 // getFieldDecorator
 export const WrappedLoginForm = Form.create()(LoginForm);

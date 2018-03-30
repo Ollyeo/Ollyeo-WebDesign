@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'; // Reducx
 
+// Ant Design
 import { Form, Input, Icon } from 'antd';
 const FormItem = Form.Item;
 
 // Dynamic Rules : Perform different check rules according to different situations.
 //  https://ant.design/components/form/
-
 class ValidInput extends React.Component {
 	render() {
 		const { getFieldDecorator } = this.props.obj_form;
@@ -48,16 +49,24 @@ ValidInput.propTypes = {
 	obj_id: PropTypes.string.isRequired,
 	obj_form: PropTypes.object.isRequired,
 
-	size: 'default',
-	placeholder: '',
-	style: '',
+	size: PropTypes.string,			// default
+	placeholder: PropTypes.string,
+	style: PropTypes.string,
 
-	pf_iconType: 'question',
+	pf_iconType: PropTypes.string,
 
 	// Validation Rules
-	vr_required: false,
-	vr_message: 'Validation error message.'
-}
+	vr_required: PropTypes.string,	// fasle
+	vr_message: PropTypes.string
+};
+
+// let mapStateToProps = (state) => {
+//     return {
+//         loginForm: state.formValues.loginForm
+//     };
+// }
+
+// ValidInput = connect(mapStateToProps)(ValidInput);
 
 // getFieldDecorator
 export const WrappedValidInput = Form.create()(ValidInput);

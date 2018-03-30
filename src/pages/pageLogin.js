@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './pageLogin.css';
+import { TwoColumns } from './../components/templates/templTwoColumns';
 import { WrappedLoginForm } from './../components/organisms/ogLogin';
 
 // For Ant Design components
@@ -44,24 +45,24 @@ export class PageLogin extends React.Component{
   render() {
     return (
 	  <div>
-		<Row type="flex" justify="space-around" align="middle">
-		  <Col span={12}>
-		    <AutoFitImage 
-				imgSrc={imageNormal}
-				frameWidth={((this.state.width * 0.5) - 0) + 'px'}
-				frameHeight={((this.state.height * 1.0) - 0) + 'px'}
-			/>
-		  </Col>
+		<TwoColumns
+		
+			leftObj={
+				<AutoFitImage 
+					imgSrc={imageNormal}
+					frameWidth={((this.state.width * 0.5) - 0) + 'px'}
+					frameHeight={((this.state.height * 1.0) - 0) + 'px'}
+				/>}
 
-		  <Col span={12}>
-			<Row type="flex" justify="space-around" align="middle">
-				<Col span={12}>
-					<WrappedLoginForm />
-				</Col>
-			</Row>
-		  </Col>
-		</Row>
+			rightObj={
+				<Row type="flex" justify="space-around" align="middle">
+					<Col span={12}>
+						<WrappedLoginForm />
+					</Col>
+				</Row>
+			}
+		/>
 	  </div>
-        )
+        );
     }
 }
