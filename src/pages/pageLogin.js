@@ -55,6 +55,7 @@ export class PageLogin extends React.Component{
 				/>}
 
 			rightObj={
+				// Center position
 				<Row type="flex" justify="space-around" align="middle">
 					<Col span={12}>
 						<WrappedLoginForm />

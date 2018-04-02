@@ -2,7 +2,7 @@ import React from 'react';
 import './ogLogin.css';
 
 import { connect } from 'react-redux'; // Reducx
-import formValues from './../../reducers/formValues'; // action
+import * as registerActions from './../../reducers/formValues';
 import { InputLoginID, InputLoginPW } from './../molecules/mcInputs'; // Molecules
 
 // Ant Design
@@ -16,6 +16,12 @@ class LoginForm extends React.Component {
 		submit_consoleLog: 'LoginForm SubmitInput, submit_consoleLog'
 	}
 	
+    constructor(props){
+        super(props);
+		
+		this.props.onRegisterForm(this.props.form);
+    }
+
 	handleSubmit=(e) => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
@@ -27,11 +33,12 @@ class LoginForm extends React.Component {
 	
 	render() {	  
 		const { form } = this.props;
+
 		return (
 			<Form className="login-form" onSubmit={this.handleSubmit} >
 				<FormItem>
-					<InputLoginID obj_form={ form } />
-					<InputLoginPW obj_form={ form } />
+					<InputLoginID />
+					<InputLoginPW />
 					<a className="forgot-href" 
 						href="">Forgot password?
 					</a>
@@ -54,13 +61,13 @@ class LoginForm extends React.Component {
     }
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         props: form => dispatch(formValues(form))
-//     }
-// }
-
-// LoginForm = connect(undefined, mapDispatchToProps)(LoginForm);
+const mapDispatchToProps = (dispatch) => ({
+	onRegisterForm: (loginForm) =>
+	dispatch(registerActions.registerLoginForm(loginForm))
+})
+	
+// Just get the value from the Store
+LoginForm = connect(undefined, mapDispatchToProps)(LoginForm);
 
 // getFieldDecorator
 export const WrappedLoginForm = Form.create()(LoginForm);

@@ -11,6 +11,7 @@ const FormItem = Form.Item;
 class ValidInput extends React.Component {
 	render() {
 		const { getFieldDecorator } = this.props.obj_form;
+		
 		return (
 			<Form>
 				<FormItem>
@@ -47,7 +48,7 @@ class ValidInput extends React.Component {
 // Variables
 ValidInput.propTypes = {
 	obj_id: PropTypes.string.isRequired,
-	obj_form: PropTypes.object.isRequired,
+	obj_form: PropTypes.object.isRequired, // Takes from the Store, Redux
 
 	size: PropTypes.string,			// default
 	placeholder: PropTypes.string,
@@ -60,13 +61,13 @@ ValidInput.propTypes = {
 	vr_message: PropTypes.string
 };
 
-// let mapStateToProps = (state) => {
-//     return {
-//         loginForm: state.formValues.loginForm
-//     };
-// }
+let mapStateToProps = (state) => {
+    return {
+        obj_form: state.formValues.loginForm
+    };
+}
 
-// ValidInput = connect(mapStateToProps)(ValidInput);
+ValidInput = connect(mapStateToProps)(ValidInput);
 
 // getFieldDecorator
 export const WrappedValidInput = Form.create()(ValidInput);
