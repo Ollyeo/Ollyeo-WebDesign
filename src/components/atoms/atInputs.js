@@ -63,7 +63,7 @@ ValidInput.propTypes = {
 
 let mapStateToProps = (state) => {
     return {
-        obj_form: state.formValues.loginForm
+        obj_form: state.formValues.objForm
     };
 }
 

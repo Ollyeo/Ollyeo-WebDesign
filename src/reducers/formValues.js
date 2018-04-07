@@ -2,18 +2,18 @@
 import { createAction, handleActions } from 'redux-actions';
 
 // Define action type
-const REGISTER_LOGIN_FORM = 'LoginForm/REGISTER_LOGIN_FORM';
+const REGISTER_OBJ_FORM = 'ObjForm/REGISTER_OBJ_FORM2';
 
-export const registerLoginForm = createAction(
-	REGISTER_LOGIN_FORM, loginForm => loginForm);
+export const registerObjForm = createAction(
+	REGISTER_OBJ_FORM, objForm => objForm);
 
 const initialState = {
-    loginForm: 0
+    objForm: 0,
 };
 
 	
 export default handleActions({
-  [REGISTER_LOGIN_FORM]: (state, action) => {
-    return { loginForm: action.payload };
+  [REGISTER_OBJ_FORM]: (state, action) => {
+    return { objForm: action.payload };
   }
 }, initialState);

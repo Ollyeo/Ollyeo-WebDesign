@@ -1,17 +1,17 @@
 import React from 'react';
 
-import './pageLogin.css';
+import './pageMain.css';
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Row, Col, Form, Icon, Input, Button, Checkbox } from 'antd';
+import AutoFitImage from 'react-image-autofit-frame';
+
 import { TwoColumns } from './../components/templates/templTwoColumns';
 import { WrappedLoginForm } from './../components/organisms/ogLogin';
+import { WrappedRegisterForm } from './../components/organisms/ogRegister';
 
-// For Ant Design components
-import { Row, Col, Form, Icon, Input, Button, Checkbox } from 'antd';
-
-// Images
 import imageNormal from '../asset/images/travelPlan_Normal.jpg';
 import ImageHorizontal from '../asset/images/plane_Horizontal.jpg';
-
-import AutoFitImage from 'react-image-autofit-frame'; // Imgae Auto-Fit
 const FormItem=Form.Item; // For convenience
 
 // Image Auto Resizing
@@ -22,7 +22,7 @@ const FormItem=Form.Item; // For convenience
 //  https://www.npmjs.com/package/react-window-size
 
 // Main Login Page
-export class PageLogin extends React.Component{
+export class PageMain extends React.Component{
 	constructor(props) {
 	  super(props);
 	  this.state = { width: 0, height: 0 };
@@ -44,26 +44,36 @@ export class PageLogin extends React.Component{
 	
   render() {
     return (
+	  <Router>
 	  <div>
-		<TwoColumns
-		
-			leftObj={
-				<AutoFitImage 
-					imgSrc={imageNormal}
-					frameWidth={((this.state.width * 0.5) - 0) + 'px'}
-					frameHeight={((this.state.height * 1.0) - 0) + 'px'}
-				/>}
+		  <TwoColumns
+			  leftObj={
+				  <AutoFitImage 
+					  imgSrc={imageNormal}
+					  frameWidth={((this.state.width * 0.5) - 0) + 'px'}
+					  frameHeight={((this.state.height * 1.0) - 0) + 'px'}
+				  />
+			  }
 
-			rightObj={
-				// Center position
-				<Row type="flex" justify="space-around" align="middle">
-					<Col span={12}>
-						<WrappedLoginForm />
-					</Col>
-				</Row>
-			}
-		/>
+			  rightObj={
+				  // Center position
+				  <Row type="flex" justify="space-around" align="middle">
+					  <Col span={12}>
+						  <Route 
+							exact 
+						  	path="/"
+						  	component={WrappedLoginForm}
+						  />
+						  <Route
+						  	path="/register"
+						  	component={WrappedRegisterForm}
+						  />
+					  </Col>
+				  </Row>
+			  }
+		  />
 	  </div>
+	  </Router>
         );
     }
 }

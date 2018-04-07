@@ -1,27 +1,25 @@
 import React from 'react';
-import './ogLogin.css';
+import './ogRegister.css';
 
 import { connect } from 'react-redux'; // Reducx
 import * as registerActions from './../../reducers/formValues';
-import { BrowserRouter as Route, Link } from "react-router-dom";
 import { InputLoginID, InputLoginPW } from './../molecules/mcInputs'; // Molecules
-import { WrappedRegisterForm } from './ogRegister'; // Register Form
 
 // Ant Design
-import { Form, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 const FormItem = Form.Item;
 
-class LoginForm extends React.Component {	
+class RegisterForm extends React.Component {
 	// Variables
 	propTypes: {
-		submit_consoleLog: 'LoginForm SubmitInput, submit_consoleLog'
+		submit_consoleLog: 'RegisterForm SubmitInput, submit_consoleLog'
 	}
 	
     constructor(props){
         super(props);
 		
 		this.props.onRegisterForm(this.props.form);
-    }
+    }	
 
 	handleSubmit=(e) => {
 		e.preventDefault();
@@ -31,32 +29,24 @@ class LoginForm extends React.Component {
 			}
 		});
 	}
-	
-	render() {	  
-		const { form } = this.props;
 
-		return (
-			<Form className="login-form" onSubmit={this.handleSubmit} >
+	render() {	  
+	const { form } = this.props;
+
+	return (
+			<Form className="register-form" onSubmit={this.handleSubmit} >
 				<FormItem>
 					<InputLoginID />
 					<InputLoginPW />
-					<a className="forgot-href" 
-						href="">Forgot password?
-					</a>
-					<Button className="login-button"
+					<InputLoginPW />
+					<Button className="register-button"
 						type="primary"
 						htmlType="submit"
-						>Log in
+						>Register
 					</Button>
-					<Form className="create-recommend-text" layout="inline" >
-						<FormItem>
-							<h>Not registered?&nbsp;</h>
-							<Link to="/register">Create an account!</Link>
-						</FormItem>
-					</Form>
 				</FormItem>
 			</Form>
-        );
+		);
     }
 }
 
@@ -66,7 +56,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 	
 // Just get the value from the Store
-LoginForm = connect(undefined, mapDispatchToProps)(LoginForm);
+RegisterForm = connect(undefined, mapDispatchToProps)(RegisterForm);
 
 // getFieldDecorator
-export const WrappedLoginForm = Form.create()(LoginForm);
+export const WrappedRegisterForm = Form.create()(RegisterForm);
