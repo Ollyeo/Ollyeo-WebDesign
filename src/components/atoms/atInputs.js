@@ -13,34 +13,32 @@ class ValidInput extends React.Component {
 		const { getFieldDecorator } = this.props.obj_form;
 		
 		return (
-			<Form>
-				<FormItem>
-					{getFieldDecorator
-						(
-							this.props.obj_id,
-							{
-								rules: [{
-									required: this.props.vr_required,
-									message: this.props.vr_message
-								}],
+			<FormItem>
+				{getFieldDecorator
+					(
+						this.props.obj_id,
+						{
+							rules: [{
+								required: this.props.vr_required,
+								message: this.props.vr_message
+							}],
+						}
+					)
+					(
+						<Input
+							prefix={
+								<Icon 
+									type={this.props.pf_iconType}
+									style={{ color: 'rgba(0,0,0,.25)' }}
+								/>
 							}
-						)
-						(
-							<Input
-								prefix={
-									<Icon 
-										type={this.props.pf_iconType}
-										style={{ color: 'rgba(0,0,0,.25)' }}
-									/>
-								}
-								size={this.props.size}
-								placeholder={this.props.placeholder}
-								style={ this.props.style }
-							/>
-						)
-					}
-				</FormItem>
-			</Form>
+							size={this.props.size}
+							placeholder={this.props.placeholder}
+							style={ this.props.style }
+						/>
+					)
+				}
+			</FormItem>
 		);
 	}
 }

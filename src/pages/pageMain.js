@@ -21,7 +21,7 @@ const FormItem=Form.Item; // For convenience
 // Window Size
 //  https://www.npmjs.com/package/react-window-size
 
-// Main Login Page
+// Main Page : Login, Register
 export class PageMain extends React.Component{
 	constructor(props) {
 	  super(props);

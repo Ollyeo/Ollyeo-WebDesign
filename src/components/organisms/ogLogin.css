@@ -1,4 +1,5 @@
 .login-form {
+  text-align: center;
 }
 
 .forgot-href {
@@ -9,11 +10,4 @@
 .login-button {
   width: 100%;
   margin-top: 35px;
-}
-
-.create-recommend-text {
-  text-align: center;
-}
-
-.create-href {
 }

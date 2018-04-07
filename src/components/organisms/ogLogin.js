@@ -48,12 +48,10 @@ class LoginForm extends React.Component {
 						htmlType="submit"
 						>Log in
 					</Button>
-					<Form className="create-recommend-text" layout="inline" >
-						<FormItem>
-							<h>Not registered?&nbsp;</h>
-							<Link to="/register">Create an account!</Link>
-						</FormItem>
-					</Form>
+					<FormItem>
+						<h>Not registered?&nbsp;</h>
+						<Link to="/register">Create an account!</Link>
+					</FormItem>
 				</FormItem>
 			</Form>
         );
