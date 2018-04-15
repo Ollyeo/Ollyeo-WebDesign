@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
 		this.props.onRegisterForm(this.props.form);
     }
 
-	handleSubmit=(e) => {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
@@ -46,9 +46,9 @@ class LoginForm extends React.Component {
 					<Button className="login-button"
 						type="primary"
 						htmlType="submit"
-						>Log in
+						>Login
 					</Button>
-					<FormItem>
+					<FormItem className="create-account-text">
 						<h>Not registered?&nbsp;</h>
 						<Link to="/register">Create an account!</Link>
 					</FormItem>

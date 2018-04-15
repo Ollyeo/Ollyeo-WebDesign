@@ -1,5 +1,5 @@
 .login-form {
-  text-align: center;
+  
 }
 
 .forgot-href {
@@ -8,6 +8,11 @@
 }
 
 .login-button {
+  text-align: center;
   width: 100%;
   margin-top: 35px;
+}
+
+.create-account-text {
+  text-align: center;
 }
