@@ -2,7 +2,7 @@ import React from 'react';
 import './ogLogin.css';
 
 import { connect } from 'react-redux'; // Reducx
-import * as registerActions from './../../reducers/formValues';
+import * as registerActions from './../../reducers/rdFormValues';
 import { BrowserRouter as Route, Link } from "react-router-dom";
 import { InputLoginID, InputLoginPW } from './../molecules/mcInputs'; // Molecules
 import { WrappedRegisterForm } from './ogRegister'; // Register Form
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
 					<InputLoginID />
 					<InputLoginPW />
 					<a className="forgot-href" 
-						href="">Forgot password?
+						href="/">Forgot password?
 					</a>
 					<Button className="login-button"
 						type="primary"

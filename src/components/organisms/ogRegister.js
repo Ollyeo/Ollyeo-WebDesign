@@ -3,7 +3,7 @@ import './ogRegister.css';
 
 import { connect } from 'react-redux'; // Reducx
 import { BrowserRouter as Route, Link } from "react-router-dom";
-import * as registerActions from './../../reducers/formValues';
+import * as registerActions from './../../reducers/rdFormValues';
 import { InputLoginID, InputLoginPW } from './../molecules/mcInputs'; // Molecules
 
 // Ant Design
@@ -62,7 +62,7 @@ class RegisterForm extends React.Component {
 						placeholder='Confirm Password'
 						rules={{
 							   required:true,
-							   message:"Does not match with the password.",
+							   message:"Does not match with the password!",
 							   type: "enum",
 							   enum: [password]
 						}}

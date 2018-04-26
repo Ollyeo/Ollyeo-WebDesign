@@ -9,6 +9,7 @@ import AutoFitImage from 'react-image-autofit-frame';
 import { TwoColumns } from './../components/templates/templTwoColumns';
 import { WrappedLoginForm } from './../components/organisms/ogLogin';
 import { WrappedRegisterForm } from './../components/organisms/ogRegister';
+import { TestForm } from './../components/organisms/ogTest';
 
 import imageNormal from '../asset/images/travelPlan_Normal.jpg';
 import ImageHorizontal from '../asset/images/plane_Horizontal.jpg';
@@ -59,9 +60,12 @@ export class PageMain extends React.Component{
 				  // Center position
 				  <Row type="flex" justify="space-around" align="middle">
 					  <Col span={12}>
-						  <Route 
-							exact 
+						  <Route exact
 						  	path="/"
+						  	component={TestForm}
+						  />
+						  <Route 
+						  	path="/login"
 						  	component={WrappedLoginForm}
 						  />
 						  <Route
