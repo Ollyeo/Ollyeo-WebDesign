@@ -1,5 +1,6 @@
 // https://redux-actions.js.org/docs/api/
 import { createAction, handleActions } from 'redux-actions';
+import { userService } from '../services';
 
 // Define action type
 const REGISTER_REQUEST = 'Registration/REGISTER_REQUEST';

@@ -1,5 +1,6 @@
 // https://redux-actions.js.org/docs/api/
 import { createAction, handleActions } from 'redux-actions';
+import { userService } from '../services';
 
 // Define action type
 const LOGIN_REQUEST = 'Authentication/USERS_LOGIN_REQUEST';
@@ -29,7 +30,9 @@ export default handleActions(
 		
 		LOGIN_FAILURE: (state, action) => ({}),
 		
-		LOGOUT: (state, action) => ({})
+		LOGOUT: (state, action) => {
+			userService.logout();
+		}
  	},
 	initialState
 );

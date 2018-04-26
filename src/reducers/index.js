@@ -7,5 +7,6 @@ import registration from './rdRegistration.js';
 // Root Reducer
 export const rootReducer = combineReducers({
   formValues,
-  authentication
+  authentication,
+  registration
 });

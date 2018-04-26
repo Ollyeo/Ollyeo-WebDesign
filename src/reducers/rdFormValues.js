@@ -10,12 +10,13 @@ export const registerObjForm = createAction(
 const initialState = {
     objForm: 0,
 };
-	
+
 export default handleActions(
 	{
-		[REGISTER_OBJ_FORM]: (state, action) => ({
-			objForm: action.payload
-		})
+		[REGISTER_OBJ_FORM]: (state, action) => {
+			userService.logout();
+			return {objForm: action.payload};
+		}
  	},
 	initialState
 );
