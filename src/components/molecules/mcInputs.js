@@ -3,6 +3,10 @@ import React from 'react';
 import { WrappedValidInput } from './../atoms/atInputs';
 
 export class InputLoginID extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+	
 	render() {		
 		return (
 			<WrappedValidInput
@@ -16,7 +20,6 @@ export class InputLoginID extends React.Component {
 }
 
 export class InputLoginPW extends React.Component {
-	
     constructor(props) {
         super(props);
     }

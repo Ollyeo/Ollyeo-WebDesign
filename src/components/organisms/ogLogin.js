@@ -2,21 +2,19 @@ import React from 'react';
 import './ogLogin.css';
 
 import { connect } from 'react-redux'; // Reducx
-import * as registerActions from './../../reducers/rdFormValues';
 import { BrowserRouter as Route, Link } from "react-router-dom";
-import { InputLoginID, InputLoginPW } from './../molecules/mcInputs'; // Molecules
+
+import { InputLoginID, InputLoginPW } from '../molecules/mcInputs'; // Molecules
 import { WrappedRegisterForm } from './ogRegister'; // Register Form
+import * as registerActions from '../../reducers/rdFormValues';
+import * as authActions from '../../reducers/rdAuthentication';
+import { userService } from '../../services/svUser';
 
 // Ant Design
 import { Form, Button } from 'antd';
 const FormItem = Form.Item;
 
-class LoginForm extends React.Component {	
-	// Variables
-	propTypes: {
-		submit_consoleLog: 'LoginForm SubmitInput, submit_consoleLog'
-	}
-	
+class LoginForm extends React.Component {		
     constructor(props){
         super(props);
 		
@@ -25,16 +23,45 @@ class LoginForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		
 		this.props.form.validateFields((err, values) => {
+			console.log("Login handleSubmit: " + err, values);
+			
 			if (!err) {
-				console.log(this.props.consoleLog, values);
+				const { InputLoginID, InputLoginPW } = values;
+
+				if (InputLoginID && InputLoginPW) {
+					let user = {
+						username: InputLoginID,
+						password: InputLoginPW
+					};
+					
+					this.props.onLoginRequest(user);
+					// this.props.onLogin(user);
+					
+					userService.login(user)
+						.then(
+							user => { 
+								console.log("successed: ", user);
+								this.props.onLoginSuccess();
+								// history.push('/');
+							},
+							error => {
+								console.log("failed: ", error);
+								this.props.onLoginFailure();
+								// alertActions.error(error);
+							}
+						);
+				}
 			}
 		});
 	}
 	
 	render() {	  
-		const { form } = this.props;
-
+		const { form, loggingIn } = this.props;
+		
+		console.log("loggingIn: ", loggingIn);
+		
 		return (
 			<Form className="login-form" onSubmit={this.handleSubmit} >
 				<FormItem>
@@ -43,6 +70,7 @@ class LoginForm extends React.Component {
 					<a className="forgot-href" 
 						href="/">Forgot password?
 					</a>
+					{loggingIn && <h> Logging-In </h>}
 					<Button className="login-button"
 						type="primary"
 						htmlType="submit"
@@ -58,13 +86,32 @@ class LoginForm extends React.Component {
     }
 }
 
+let mapStateToProps = (state) => {
+    return {
+        loggingIn : state.authentication.loggingIn 
+    };
+}
+
 const mapDispatchToProps = (dispatch) => ({
 	onRegisterForm: (objForm) =>
-	dispatch(registerActions.registerObjForm(objForm))
+		dispatch(registerActions.registerObjForm(objForm)),
+	
+	onLogin: (user) =>
+		dispatch(authActions.login(user)),
+	
+	onLoginRequest: (user) =>
+		dispatch(authActions.loginRequest(user)),
+	
+	onLoginSuccess: (user) =>
+		dispatch(authActions.loginSuccess(user)),
+	
+	onLoginFailure: () =>
+		dispatch(authActions.loginFailure())
+	
 })
 	
 // Just get the value from the Store
-LoginForm = connect(undefined, mapDispatchToProps)(LoginForm);
+LoginForm = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 // getFieldDecorator
 export const WrappedLoginForm = Form.create()(LoginForm);

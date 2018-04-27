@@ -14,7 +14,6 @@ const initialState = {
 export default handleActions(
 	{
 		[REGISTER_OBJ_FORM]: (state, action) => {
-			userService.logout();
 			return {objForm: action.payload};
 		}
  	},

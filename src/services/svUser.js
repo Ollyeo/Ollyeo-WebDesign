@@ -1,4 +1,4 @@
-import { getAuthHeader } from '../helpers';
+import { getAuthHeader } from '../helpers/get-auth-header';
 
 export const userService = {
     login,
@@ -8,14 +8,19 @@ export const userService = {
 };
 
 function login(username, password) {
+	console.log("In login, userService");
+	
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     };
 
+	console.log(requestOptions);
+	
     return fetch('/users/authenticate', requestOptions)
         .then(response => {
+			console.log("response: ", response);
             if (!response.ok) { 
                 return Promise.reject(response.statusText);
             }
@@ -23,9 +28,10 @@ function login(username, password) {
             return response.json();
         })
         .then(user => {
+			console.log("user: ", user);
             // login successful if there's a jwt token in the response
             if (user && user.token) {
-                // store user details and jwt token in local storage
+				// store user details and jwt token in local storage
 				// to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
             }
