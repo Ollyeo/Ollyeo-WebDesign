@@ -7,7 +7,7 @@ export class TwoColumns extends React.Component{
 	propTypes: {
 		leftObj: PropTypes.object,
 		rightObj: PropTypes.object
-	}
+	};
 	
   render() {
     return (

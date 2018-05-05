@@ -18,13 +18,16 @@ function login(username, password) {
 
 	console.log(requestOptions);
 	
-    return fetch('/users/authenticate', requestOptions)
+    return fetch('https://example.com/users/authenticate', requestOptions)
         .then(response => {
 			console.log("response: ", response);
+		
+			// Failed to respone
             if (!response.ok) { 
                 return Promise.reject(response.statusText);
             }
 
+			// Successed to respone
             return response.json();
         })
         .then(user => {

@@ -40,9 +40,9 @@ class ValidInput extends React.Component {
 									style={{color: 'rgba(0,0,0,.25)'}}
 								/>
 							}
+							type={this.props.type}
 							size={this.props.size}
 							placeholder={this.props.placeholder}
-							style={this.props.style}
         					onChange={this.onChangeEvent}
 						/>
 					)
@@ -55,11 +55,12 @@ class ValidInput extends React.Component {
 // Variables
 ValidInput.propTypes = {
 	obj_id: PropTypes.string.isRequired,
-	obj_form: PropTypes.object.isRequired, // Takes from the Store, Redux
+	// Takes from the Store, Redux
+	obj_form: PropTypes.object.isRequired,
 
+	type: PropTypes.string,
 	size: PropTypes.string, // default
 	placeholder: PropTypes.string,
-	style: PropTypes.string,
 
 	pf_iconType: PropTypes.string, // prefix
 	rules: PropTypes.object

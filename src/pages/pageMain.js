@@ -3,9 +3,10 @@ import React from 'react';
 import './pageMain.css';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Row, Col, Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Row, Col, Form, Icon, Input, Button, Checkbox, Layout } from 'antd';
 import AutoFitImage from 'react-image-autofit-frame';
 
+import { HeaderContentFooter } from './../components/templates/templHeaderContentFooter';
 import { TwoColumns } from './../components/templates/templTwoColumns';
 import { WrappedLoginForm } from './../components/organisms/ogLogin';
 import { WrappedRegisterForm } from './../components/organisms/ogRegister';
@@ -47,33 +48,37 @@ export class PageMain extends React.Component{
     return (
 	  <Router>
 	  <div>
-		  <TwoColumns
-			  leftObj={
-				  <AutoFitImage 
-					  imgSrc={imageNormal}
-					  frameWidth={((this.state.width * 0.5) - 0) + 'px'}
-					  frameHeight={((this.state.height * 1.0) - 0) + 'px'}
-				  />
-			  }
+		  <HeaderContentFooter
+			  contentObj={
+				  <TwoColumns
+					  leftObj={
+						  <AutoFitImage 
+							  imgSrc={imageNormal}
+							  frameWidth={((this.state.width * 0.5) - 0) + 'px'}
+							  frameHeight={((this.state.height * 1.0) - 0) + 'px'}
+						  />
+					  }
 
-			  rightObj={
-				  // Center position
-				  <Row type="flex" justify="space-around" align="middle">
-					  <Col span={12}>
-						  <Route exact
-						  	path="/"
-						  	component={TestForm}
-						  />
-						  <Route 
-						  	path="/login"
-						  	component={WrappedLoginForm}
-						  />
-						  <Route
-						  	path="/register"
-						  	component={WrappedRegisterForm}
-						  />
-					  </Col>
-				  </Row>
+					  rightObj={
+						  // Center position
+						  <Row type="flex" justify="space-around" align="middle">
+							  <Col span={12}>
+								  <Route exact
+									path="/"
+									component={TestForm}
+								  />
+								  <Route 
+									path="/login"
+									component={WrappedLoginForm}
+								  />
+								  <Route
+									path="/register"
+									component={WrappedRegisterForm}
+								  />
+							  </Col>
+						  </Row>
+					  }
+				  />
 			  }
 		  />
 	  </div>

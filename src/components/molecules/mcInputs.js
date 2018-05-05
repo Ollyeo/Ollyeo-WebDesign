@@ -13,7 +13,10 @@ export class InputLoginID extends React.Component {
 				obj_id='InputLoginID'
 				pf_iconType='user'
 				placeholder='Username'
-				rules={{required:true, message:"Please input your username!"}}
+				rules={{
+					required:true,
+					message:"Please input your username!"
+				}}
 			/>
 		);
 	}
@@ -34,6 +37,8 @@ export class InputLoginPW extends React.Component {
 			<WrappedValidInput
 				obj_id={'InputLoginPW' + this.props.obj_id}
 				pf_iconType='lock'
+
+				type="password"
 				placeholder={this.props.placeholder}
 				rules={this.props.rules}
 				onChange={this.onChangeEvent.bind(this)}
@@ -46,5 +51,8 @@ export class InputLoginPW extends React.Component {
 InputLoginPW.defaultProps  = {
 	obj_id: '',
 	placeholder: 'Password',
-	rules: {required:true, message:'Please input your password!'}
+	rules: {
+		required:true,
+		message:'Please input your password!'
+	}
 };

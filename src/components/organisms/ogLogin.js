@@ -42,19 +42,19 @@ class LoginForm extends React.Component {
 					userService.login(user)
 						.then(
 							user => { 
-								console.log("successed: ", user);
+								console.log("userService.login successed: ", user);
 								this.props.onLoginSuccess();
 								// history.push('/');
 							},
 							error => {
-								console.log("failed: ", error);
+								console.log("userService.login failed: ", error);
 								this.props.onLoginFailure();
 								// alertActions.error(error);
 							}
 						);
 				}
 			}
-		});
+		})
 	}
 	
 	render() {	  
