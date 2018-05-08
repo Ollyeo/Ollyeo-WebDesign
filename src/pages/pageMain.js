@@ -49,6 +49,9 @@ export class PageMain extends React.Component{
 	  <Router>
 	  <div>
 		  <HeaderContentFooter
+			  contentSty={{
+				background: '-webkit-linear-gradient(70deg, #f0f2f5 30%, #A6FBEA 80%, #1ABC9C 95%)',
+  			  }}
 			  contentObj={
 				  <TwoColumns
 					  leftObj={
@@ -60,7 +63,6 @@ export class PageMain extends React.Component{
 					  }
 
 					  rightObj={
-						  // Center position
 						  <Row type="flex" justify="space-around" align="middle">
 							  <Col span={12}>
 								  <Route exact

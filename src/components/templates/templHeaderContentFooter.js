@@ -6,6 +6,8 @@ const { Header, Content, Footer } = Layout;
 export class HeaderContentFooter extends React.Component{
 	// Variables
 	propTypes: {
+		contentSty: PropTypes.object,
+		
 		headerObj: PropTypes.object,
 		contentObj: PropTypes.object,
 		footerObj: PropTypes.object
@@ -16,7 +18,10 @@ export class HeaderContentFooter extends React.Component{
 		<Layout>
 			{ this.props.headerObj }
 
-			<Content>
+			<Content
+				style={ this.props.contentSty }
+			>
+				
 				{ this.props.contentObj }
 			</Content>
 		
