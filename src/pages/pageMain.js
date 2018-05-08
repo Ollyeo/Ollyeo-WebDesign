@@ -50,7 +50,7 @@ export class PageMain extends React.Component{
 	  <div>
 		  <HeaderContentFooter
 			  contentSty={{
-				background: '-webkit-linear-gradient(70deg, #f0f2f5 30%, #A6FBEA 80%, #1ABC9C 95%)',
+				background: '-webkit-linear-gradient(75deg, #f0f2f5 30%, #A6FBEA 80%, #1ABC9C 95%)',
   			  }}
 			  contentObj={
 				  <TwoColumns
@@ -72,6 +72,7 @@ export class PageMain extends React.Component{
 								  <Route 
 									path="/login"
 									component={WrappedLoginForm}
+									style={{ position:'absolute' }}
 								  />
 								  <Route
 									path="/register"

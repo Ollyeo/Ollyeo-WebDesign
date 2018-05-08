@@ -63,25 +63,27 @@ class LoginForm extends React.Component {
 		console.log("loggingIn: ", loggingIn);
 		
 		return (
-			<Form className="login-form" onSubmit={this.handleSubmit} >
-				<FormItem>
-					<InputLoginID />
-					<InputLoginPW />
-					<a className="forgot-href" 
-						href="/">Forgot password?
-					</a>
-					{loggingIn && <h> Logging-In </h>}
-					<Button className="login-button"
-						type="primary"
-						htmlType="submit"
-						>Login
-					</Button>
-					<FormItem className="create-account-text">
-						<h>Not registered?&nbsp;</h>
-						<Link to="/register">Create an account!</Link>
+			<div className="login-form">
+				<Form className="login-contents" onSubmit={this.handleSubmit} >
+					<FormItem>
+						<InputLoginID />
+						<InputLoginPW />
+						<a className="forgot-href" 
+							href="/">Forgot password?
+						</a>
+						{loggingIn && <h> Logging-In </h>}
+						<Button className="login-button"
+							type="primary"
+							htmlType="submit"
+							>Login
+						</Button>
+						<FormItem className="create-account-text">
+							<h>Not registered?&nbsp;</h>
+							<Link to="/register">Create an account!</Link>
+						</FormItem>
 					</FormItem>
-				</FormItem>
-			</Form>
+				</Form>
+			</div>
         );
     }
 }
