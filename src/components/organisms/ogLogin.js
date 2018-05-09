@@ -11,8 +11,14 @@ import * as authActions from '../../reducers/rdAuthentication';
 import { userService } from '../../services/svUser';
 
 // Ant Design
-import { Form, Button } from 'antd';
+import { Row, Col, Form, Button } from 'antd';
 const FormItem = Form.Item;
+
+// Login Form's Constants
+export const loginFormCons = {
+    WIDTH: 290,
+    HEIGHT: 290,
+};
 
 class LoginForm extends React.Component {		
     constructor(props){
@@ -64,25 +70,29 @@ class LoginForm extends React.Component {
 		
 		return (
 			<div className="login-form">
-				<Form className="login-contents" onSubmit={this.handleSubmit} >
-					<FormItem>
-						<InputLoginID />
-						<InputLoginPW />
-						<a className="forgot-href" 
-							href="/">Forgot password?
-						</a>
-						{loggingIn && <h> Logging-In </h>}
-						<Button className="login-button"
-							type="primary"
-							htmlType="submit"
-							>Login
-						</Button>
-						<FormItem className="create-account-text">
-							<h>Not registered?&nbsp;</h>
-							<Link to="/register">Create an account!</Link>
-						</FormItem>
-					</FormItem>
-				</Form>
+				<Row type="flex" justify="space-around" align="middle">
+		  			<Col>
+						<Form className="login-contents" onSubmit={this.handleSubmit} >
+							<FormItem>
+								<InputLoginID />
+								<InputLoginPW />
+								<a className="forgot-href" 
+									href="/">Forgot password?
+								</a>
+								{loggingIn && <h> Logging-In </h>}
+								<Button className="login-button"
+									type="primary"
+									htmlType="submit"
+									>Login
+								</Button>
+								<FormItem className="create-account-text">
+									<h>Not registered?&nbsp;</h>
+									<Link to="/register">Create an account!</Link>
+								</FormItem>
+							</FormItem>
+						</Form>
+					</Col>
+				</Row>
 			</div>
         );
     }

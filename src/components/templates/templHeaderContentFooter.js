@@ -18,10 +18,7 @@ export class HeaderContentFooter extends React.Component{
 		<Layout>
 			{ this.props.headerObj }
 
-			<Content
-				style={ this.props.contentSty }
-			>
-				
+			<Content style={ this.props.contentSty }>
 				{ this.props.contentObj }
 			</Content>
 		

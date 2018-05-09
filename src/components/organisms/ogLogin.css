@@ -1,7 +1,4 @@
-.login-form {
-	width: 290px;
-	height: 290px;
-	
+.login-form {	
 	background: white;
 	border-radius: 15px 50px;
 	
@@ -11,7 +8,7 @@
 }
 
 .login-contents {
-	width: 75%;
+	margin-top: 25px;
 }
 
 .forgot-href {

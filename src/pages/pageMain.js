@@ -27,7 +27,11 @@ const FormItem=Form.Item; // For convenience
 export class PageMain extends React.Component{
 	constructor(props) {
 	  super(props);
-	  this.state = { width: 0, height: 0 };
+	  this.state = {
+		  windowWidth	: 0,
+		  windowHeight	: 0
+	  };
+		
 	  this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 	}
 
@@ -41,45 +45,47 @@ export class PageMain extends React.Component{
 	}
 
 	updateWindowDimensions() {
-	  this.setState({ width: window.innerWidth, height: window.innerHeight });
+	  this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
 	}
 	
   render() {
+	  let imageHeight = this.state.windowHeight - 45;
+	  if(imageHeight < 290)
+		 imageHeight = 290;
+	  console.log("imageHeight: " + imageHeight);
+	  
     return (
 	  <Router>
 	  <div>
 		  <HeaderContentFooter
 			  contentSty={{
-				background: '-webkit-linear-gradient(75deg, #f0f2f5 30%, #A6FBEA 80%, #1ABC9C 95%)',
+				background: '-webkit-linear-gradient(70deg, #FFFFFF 50%, #A6FBEA 80%, #1ABC9C 95%)',
   			  }}
 			  contentObj={
 				  <TwoColumns
 					  leftObj={
-						  <AutoFitImage 
+						  <AutoFitImage
 							  imgSrc={imageNormal}
-							  frameWidth={((this.state.width * 0.5) - 0) + 'px'}
-							  frameHeight={((this.state.height * 1.0) - 0) + 'px'}
+							  frameWidth="100%"
+							  frameHeight={imageHeight + 'px'}
 						  />
 					  }
 
 					  rightObj={
-						  <Row type="flex" justify="space-around" align="middle">
-							  <Col span={12}>
-								  <Route exact
-									path="/"
-									component={TestForm}
-								  />
-								  <Route 
-									path="/login"
-									component={WrappedLoginForm}
-									style={{ position:'absolute' }}
-								  />
-								  <Route
-									path="/register"
-									component={WrappedRegisterForm}
-								  />
-							  </Col>
-						  </Row>
+						<div style={{ 'margin-left': 'calc(50% - 145px)' }}>
+						  <Route exact
+							path="/"
+							component={TestForm}
+						  />
+						  <Route
+							path="/login"
+							component={WrappedLoginForm}
+						  />
+						  <Route
+							path="/register"
+							component={WrappedRegisterForm}
+						  />
+						</div>
 					  }
 				  />
 			  }
