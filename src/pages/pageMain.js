@@ -52,7 +52,6 @@ export class PageMain extends React.Component{
 	  let imageHeight = this.state.windowHeight - 45;
 	  if(imageHeight < 290)
 		 imageHeight = 290;
-	  console.log("imageHeight: " + imageHeight);
 	  
     return (
 	  <Router>
@@ -72,7 +71,7 @@ export class PageMain extends React.Component{
 					  }
 
 					  rightObj={
-						<div style={{ 'margin-left': 'calc(50% - 145px)' }}>
+						<div style={{ 'marginLeft': 'calc(50% - 145px)' }}>
 						  <Route exact
 							path="/"
 							component={TestForm}

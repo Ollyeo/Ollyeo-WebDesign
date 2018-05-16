@@ -1,4 +1,7 @@
-.login-form {	
+.login-form {
+	width: 290px;
+	height: 290px;
+	
 	background: white;
 	border-radius: 15px 50px;
 	

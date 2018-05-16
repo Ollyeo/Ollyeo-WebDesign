@@ -1,11 +1,33 @@
 import { getAuthHeader } from '../helpers/get-auth-header';
 
-export const userService = {
+const httpMainURL = 'https://example.com/';
+
+export const httpMethods = Object.freeze({
+    GET:   'GET',
+    POST:  'POST',
+});
+	  
+export const httpFunctions = {
+	request,
+	
     login,
     logout,
     register,
 	getById,
 };
+
+function request(httpMethod, httpUrl, httpData) {
+	
+	const requestURL = httpMainURL + httpUrl;
+	
+	const requestOptions = {
+		method: httpMethod,
+    	headers: { 'Content-Type': 'application/json' },
+    	body: JSON.stringify({ httpData })
+	};
+	
+    return fetch(requestURL, requestOptions);
+}
 
 function login(username, password) {
 	console.log("In login, userService");
@@ -20,7 +42,7 @@ function login(username, password) {
 	
     return fetch('https://example.com/users/authenticate', requestOptions)
         .then(response => {
-			console.log("response: ", response);
+			console.log("svUSER, response: ", response);
 		
 			// Failed to respone
             if (!response.ok) { 
@@ -30,8 +52,10 @@ function login(username, password) {
 			// Successed to respone
             return response.json();
         })
+		// Successed and got USER data
         .then(user => {
-			console.log("user: ", user);
+			console.log("svUseruser user: ", user);
+		
             // login successful if there's a jwt token in the response
             if (user && user.token) {
 				// store user details and jwt token in local storage

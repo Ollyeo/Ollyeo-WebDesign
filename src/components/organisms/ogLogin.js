@@ -8,7 +8,7 @@ import { InputLoginID, InputLoginPW } from '../molecules/mcInputs'; // Molecules
 import { WrappedRegisterForm } from './ogRegister'; // Register Form
 import * as registerActions from '../../reducers/rdFormValues';
 import * as authActions from '../../reducers/rdAuthentication';
-import { userService } from '../../services/svUser';
+import * as userService from '../../services/svUser';
 
 // Ant Design
 import { Row, Col, Form, Button } from 'antd';
@@ -43,17 +43,18 @@ class LoginForm extends React.Component {
 					};
 					
 					this.props.onLoginRequest(user);
-					// this.props.onLogin(user);
-					
-					userService.login(user)
+					// Below function's origin: httpFunctions.login(user)
+					userService.httpFunctions.request(userService.httpMethods.POST,
+													  'authenticate',
+													  user)
 						.then(
 							user => { 
-								console.log("userService.login successed: ", user);
+								console.log("ogLogin, login successed: ", user);
 								this.props.onLoginSuccess();
 								// history.push('/');
 							},
 							error => {
-								console.log("userService.login failed: ", error);
+								console.log("ogLogin, login failed: ", error);
 								this.props.onLoginFailure();
 								// alertActions.error(error);
 							}
@@ -65,8 +66,6 @@ class LoginForm extends React.Component {
 	
 	render() {	  
 		const { form, loggingIn } = this.props;
-		
-		console.log("loggingIn: ", loggingIn);
 		
 		return (
 			<div className="login-form">
