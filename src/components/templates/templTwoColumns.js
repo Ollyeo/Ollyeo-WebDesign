@@ -4,7 +4,7 @@ import { Row, Col } from 'antd'; // For Ant Design components
 // Main Login Page
 export class TwoColumns extends React.Component{
 	// Variables
-	propTypes: {			
+	propTypes: {		
 		leftObj: PropTypes.object,
 		rightObj: PropTypes.object
 	};
